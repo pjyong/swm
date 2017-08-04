@@ -2,11 +2,13 @@
 namespace Cheyoo\System\Component;
 
 use Cheyoo\System\Config\Env;
+use Cheyoo\System\Ext\SSDB\SSDB;
 class Cy{
 
     private static $_instance;
     private $moduleName;
     private $env;
+    private $cache;
 
     public static function instance()
     {
@@ -38,11 +40,19 @@ class Cy{
     public function start()
     {
         // 载入配置文件
-        $this->env->loadConfig();
+        $sysConfig = $this->env->loadConfig();
         if( $this->env->isDev() ){
             error_reporting(E_ALL);
         } else {
             error_reporting(0);
+        }
+        // 载入缓存对象
+        if( isset( $sysConfig['ssdb'] ) ){
+            $this->cache = new SSDB( $sysConfig['ssdb']['host'], $sysConfig['ssdb']['port'], $sysConfig['ssdb']['timeout'] );
+        }
+        // 载入数据库对象
+        if( isset( $sysConfig['db'] ) ){
+            ORM::init( $sysConfig['db'] );
         }
         $api = '\Cheyoo\\' . $this->getModule() . '\Api';
         $service = new \Yar_Server( new $api() );

@@ -9,7 +9,10 @@ class Env{
 
     public function loadConfig()
     {
-        $this->set( $this->sysPrefix, require( dirname( __FILE__ ) . '/params_' . $this->env . '.php' ) );
+        $sysConfig = require( dirname( __FILE__ ) . '/params_' . $this->env . '.php' );
+        $this->set( $this->sysPrefix, $sysConfig );
+
+        return $sysConfig;
     }
 
     public function isDev()

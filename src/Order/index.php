@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/../../vendor/autoload.php';
 
-use Cheyoo\Sms\Api;
+use Cheyoo\Order\Api;
 
 //
 $service = new Yar_Server(new Api());
