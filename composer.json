@@ -2,7 +2,9 @@
     "name": "vendor/member",
     "type": "project",
     "require": {
-        "j4mie/idiorm": "^1.5"
+        "pimple/pimple": "^3.0",
+        "container-interop/container-interop": "^1.2",
+        "doctrine/orm": "^2.5"
     },
     "autoload": {
         "psr-4": {"Cheyoo\\": "src/"}

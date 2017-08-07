@@ -35,5 +35,5 @@ Yar_Concurrent_Client::loop("callback", "error_callback"); //send the requests,
 */
 function ga( $m )
 {
-    return 'http://api.cheyoo.com/src/?m=' . $m;
+    return 'http://api.cheyoo.com/src/api_index.php?m=' . $m;
 }

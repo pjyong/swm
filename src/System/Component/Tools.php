@@ -3,6 +3,7 @@ namespace Cheyoo\System\Component;
 
 class Tools
 {
+
 	/**
 	 * UTF-8 字符串截取
 	 * @param string $str 需要做截取的字符串
